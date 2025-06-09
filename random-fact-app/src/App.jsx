@@ -157,7 +157,7 @@ const styles = {
   }
 };
 
-// Add keyframes for spinner animation
+// Add keyframes for spinner animation and custom scrollbar
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @keyframes spin {
@@ -168,8 +168,81 @@ styleSheet.textContent = `
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
   }
+  @keyframes scrollbarGlow {
+    0%, 100% { 
+      background: linear-gradient(45deg, #9333ea, #ec4899);
+      box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+    }
+    50% { 
+      background: linear-gradient(45deg, #ec4899, #8b5cf6);
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.8);
+    }
+  }
+  @keyframes trackGlow {
+    0%, 100% { 
+      background: rgba(15, 23, 42, 0.8);
+    }
+    50% { 
+      background: rgba(30, 41, 59, 0.9);
+    }
+  }
+  
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 10px;
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    animation: trackGlow 4s ease-in-out infinite;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #9333ea, #ec4899);
+    border-radius: 10px;
+    border: 2px solid rgba(15, 23, 42, 0.5);
+    animation: scrollbarGlow 3s ease-in-out infinite;
+    transition: all 0.3s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #a855f7, #f472b6);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.9);
+    transform: scale(1.1);
+  }
+  
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(45deg, #7c3aed, #db2777);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 1);
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: rgba(15, 23, 42, 0.8);
+  }
+  
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #9333ea rgba(15, 23, 42, 0.8);
+  }
+  
   .pulse-animation {
     animation: pulse 2s infinite;
+  }
+  
+  /* Add smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Remove default margins */
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 `;
 document.head.appendChild(styleSheet);
@@ -257,8 +330,8 @@ function App() {
             >
               🐱
             </motion.div>
-            <h1 style={styles.title}>Whisker</h1>
-            <p style={styles.subtitle}>Discover amazing cat facts</p>
+            <h1 style={styles.title}>Bella</h1>
+            <p style={styles.subtitle}>Discover amazing facts about Bella</p>
           </motion.div>
 
           {/* Button */}
@@ -292,7 +365,8 @@ function App() {
                 </>
               ) : (
                 <>
-                  ✨ Get Cat Fact
+                  ✨ Get amazing facts about Cats
+                  <span role="img" aria-label="sparkles">✨</span>
                 </>
               )}
             </motion.button>
