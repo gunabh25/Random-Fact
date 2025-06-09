@@ -543,7 +543,7 @@ function App() {
                   </>
                 ) : (
                   <>
-                    🌟 Reveal Cat Wisdom
+                    🌟 Reveal Cat Wisdom 🌟
                   </>
                 )}
               </div>
