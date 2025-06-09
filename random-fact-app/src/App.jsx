@@ -235,7 +235,7 @@ const styles = {
   }
 };
 
-// Enhanced CSS with more animations
+// CSS with Animations
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
